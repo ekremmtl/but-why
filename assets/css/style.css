@@ -1,0 +1,407 @@
+/* ========== Base ========== */
+* {
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+canvas {
+  display: block;
+}
+
+/* ========== Footer ========== */
+.footer {
+  padding: 0 20px;
+}
+
+.footer__copyright {
+  margin: 0;
+  font-size: 15px;
+  color: #ffffffc4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 1200px) {
+  .footer__copyright {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* ========== Overlay (Loading / Game Over) ========== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 99999;
+}
+
+.overlay__inner {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay--loading {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #001a2e 0%, #002538 50%, #003a52 100%);
+  transition: opacity 0.5s ease-out;
+  padding: 24px 0;
+}
+
+.overlay--loading .footer__copyright {
+  justify-content: center;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footer--overlay {
+  padding-top: 10px;
+}
+
+/* ========== Loader ========== */
+.loader {
+  width: 100%;
+  min-width: 100%;
+  text-align: center;
+  color: #e8f4ff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loader__bar-track {
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.loader__bar-fill {
+  height: 100%;
+  background: #ffffff20;
+  width: 0%;
+  transition: 0.3s;
+}
+
+.loader__percent {
+  font-size: 140px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -82%);
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* ========== Audio Unlock ========== */
+.audio-unlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.audio-unlock.show {
+  opacity: 1;
+  transition: 0.3s;
+  visibility: visible;
+}
+
+.audio-unlock__button {
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ========== HUD ========== */
+.hud {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.hud__top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hud__hint {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.hud__panel {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  width: 170px;
+}
+
+.hud__links {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+}
+
+.hud__link {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.hud__link:hover,
+.hud__link.active {
+  background: #ffffff50;
+}
+
+.footer--hud {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========== Volume ========== */
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.volume__label {
+  color: #e8f4ff;
+  font-size: 0.9em;
+}
+
+.volume__slider {
+  cursor: pointer;
+}
+
+/* ========== Subtitle ========== */
+.subtitle {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.3em;
+  text-align: center;
+  max-width: 70%;
+  display: none;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* ========== Game Over ========== */
+.overlay--gameover {
+  z-index: 10000;
+  animation: fadeIn 1s ease-out;
+}
+
+#game-over-screen.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-over-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(0, 10, 18, 0.55) 0%,
+      rgb(8 45 76 / 85%) 70%,
+      rgba(0, 10, 18, 0.92) 100%);
+  opacity: 0.8;
+}
+
+.gameover {
+  text-align: center;
+  max-width: 600px;
+  width: min(900px, calc(80vw - 40px));
+  position: relative;
+  color: #e8f4ff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.gameover__message {
+  font-size: min(5vw, 39px);
+  line-height: 1.2;
+  margin: 0 auto 26px;
+  color: #fff;
+  max-width: 60ch;
+  min-height: 6.5em;
+  white-space: pre-wrap;
+}
+
+.gameover__message.typing::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 1.05em;
+  margin-left: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  vertical-align: -0.15em;
+  animation: caretBlink 2s steps(1) infinite;
+}
+
+.gameover__restart {
+  padding: 12px 30px;
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gameover__restart.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+
+.gameover__restart:hover {
+  background: #fff;
+  color: #062538;
+}
+
+/* ========== Mobile Controls ========== */
+.mobile-controls {
+  display: none;
+  gap: 8px;
+  touch-action: manipulation;
+  flex: 0.8;
+}
+
+.mobile-controls__btn {
+  height: 54px;
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+.mobile-controls__btn:active {
+  transform: translateY(1px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 1200px) {
+  .mobile-controls {
+    display: flex;
+  }
+
+  #info {
+    display: none;
+  }
+
+  .subtitle {
+    width: 100%;
+  }
+
+  .hud {
+    padding: 10px;
+  }
+
+  #subtitle {
+    font-size: 15px;
+    bottom: 90px;
+  }
+}
+
+/* ========== Animations ========== */
+@keyframes caretBlink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

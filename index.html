@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="But Why?" />
+  <meta name="theme-color" content="#002538" />
+  <meta name="author" content="Mustafa Ekrem Mutlu" />
+  <title>But Why?</title>
+
+  <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="But Why?" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VE97BGZ8QV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-VE97BGZ8QV");
+  </script>
+</head>
+
+<body class="app">
+  <div id="loading-screen" class="overlay overlay--loading">
+    <div class="overlay__inner">
+      <div class="loader">
+        <div class="loader__percent" id="loading-text">0%</div>
+
+        <div class="loader__bar-track">
+          <div class="loader__bar-fill" id="loading-bar"></div>
+        </div>
+
+        <div id="audio-unlock" class="audio-unlock">
+          <button id="audio-unlock-button" class="audio-unlock__button" type="button">
+            Start
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer footer--overlay">
+      <p class="footer__copyright">
+        © 2026
+        <a class="footer__link" href="https://www.linkedin.com/in/ekrem-mutlu/" target="_blank"
+          rel="noopener noreferrer" title="Mustafa Ekrem Mutlu">Mustafa Ekrem Mutlu</a>
+      </p>
+    </footer>
+  </div>
+
+  <div id="game-over-screen" class="overlay overlay--gameover">
+    <div class="overlay__inner">
+      <div class="gameover">
+        <div class="gameover__message" id="result-message"></div>
+
+        <button id="restart-button" class="gameover__restart" type="button" onclick="location.reload()">
+          Try Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="hud__top">
+      <div id="info" class="hud__hint">
+        Use W/S or the Up/Down Arrow to move.
+      </div>
+
+      <div id="audio-controls" class="hud__panel">
+        <div id="volume-control" class="volume">
+          <label id="volume-label" class="volume__label" for="volume-slider">Volume:</label>
+          <input class="volume__slider" type="range" id="volume-slider" min="0" max="100" value="50" />
+        </div>
+      </div>
+
+      <nav class="hud__links" aria-label="External links & language">
+        <a id="documentary-link" class="hud__link" target="_blank" rel="noopener noreferrer"
+          href="https://www.youtube.com/watch?v=mnTU_hJoByA">Documentary</a>
+
+        <a id="lang-tr" class="hud__link" href="#" role="button">TR</a>
+        <a id="lang-en" class="hud__link" href="#" role="button">EN</a>
+      </nav>
+    </div>
+
+    <footer class="footer footer--hud">
+      <p class="footer__copyright">
+        © 2026
+        <a class="footer__link" href="https://www.linkedin.com/in/ekrem-mutlu/" target="_blank"
+          rel="noopener noreferrer" title="Mustafa Ekrem Mutlu">Mustafa Ekrem Mutlu</a>
+      </p>
+
+      <div id="mobile-controls" class="mobile-controls">
+        <button id="mobile-forward" class="mobile-controls__btn" type="button">
+          TO TARGET
+        </button>
+        <button id="mobile-back" class="mobile-controls__btn" type="button">
+          TO COLONY
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <div id="subtitle" class="subtitle" aria-live="polite"></div>
+
+  <audio id="narration-audio">
+    <source src="assets/sounds/vocal.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="music-audio" loop>
+    <source src="assets/sounds/background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="winter-audio" loop>
+    <source src="assets/sounds/winter.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="step-audio" preload="auto">
+    <source src="assets/sounds/step.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="title-fall-audio" preload="auto">
+    <source src="assets/sounds/title-fall.mp3" type="audio/mpeg" />
+  </audio>
+</body>
+
+</html>
