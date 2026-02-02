@@ -5,6 +5,7 @@ import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { inject } from '@vercel/analytics';
 import { attachPostFxGui, initPostFx, onPostFxResize, renderPostFx } from './modules/postfx.js';
 import { detectInitialLanguage, SUBTITLES_BY_LANG, t as tI18n } from './modules/i18n.js';
 import { attachSnowGui, initSnowfall, updateSnowfall } from './modules/snowfall.js';
@@ -32,6 +33,9 @@ import {
 } from './modules/audio.js';
 import { getMountainAnchorModel, initMountains } from './modules/mountains.js';
 import { attachAuroraGui, initAurora, updateAurora } from './modules/aurora.js';
+
+// Initialize Vercel Web Analytics
+inject();
 
 const ASSETS = {
   models: 'assets/models',
