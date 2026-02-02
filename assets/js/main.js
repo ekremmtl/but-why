@@ -1227,6 +1227,21 @@ function updateSubtitles() {
 
   const currentTime = narrationAudio.currentTime;
   const subtitleElement = document.getElementById('subtitle');
+  const timerEl = document.getElementById('narration-timer');
+
+  if (timerEl) {
+    const dur = narrationAudio.duration;
+    const isPlaying = !narrationAudio.paused && currentTime > 0;
+    if (!Number.isFinite(dur) || dur <= 0 || narrationAudio.ended || butWhyFinalActive || !isPlaying) {
+      timerEl.style.display = 'none';
+    } else {
+      const remain = Math.max(0, dur - currentTime);
+      const mm = Math.floor(remain / 60);
+      const ss = Math.floor(remain % 60);
+      timerEl.textContent = `${mm}:${String(ss).padStart(2, '0')}`;
+      timerEl.style.display = 'block';
+    }
+  }
 
   if (butWhyFinalActive) {
     if (subtitleElement) subtitleElement.classList.remove('show');

@@ -170,6 +170,21 @@ canvas {
   width: fit-content;
 }
 
+.hud__timer {
+  color: #e8f4ff;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 8px 10px;
+  border-radius: 5px;
+  width: fit-content;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.6px;
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .hud__panel {
   border-radius: 5px;
   display: flex;
@@ -205,6 +220,14 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .hud__timer {
+    left: auto;
+    right: 10px;
+    transform: none;
+  }
 }
 
 /* ========== Volume ========== */
