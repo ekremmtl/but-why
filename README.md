@@ -2,10 +2,7 @@
 
 A tiny Three.js experiment inspired by the Nihilistic Penguin.
 
-A penguin walks toward a mountain.
-There is no goal.
-There is no reward.
-Just movement.
+A penguin chasing his dreams. does he gonna reach them or die trying?
 
 ![Preview](assets/images/readme-image.png)
 
